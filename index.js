@@ -26,5 +26,5 @@ mongoose.connect(MONGO_URL).then(() => {
 
 // Routes
 app.get('/', (req, res) => {
-    res.send('Task Management API is running');
+    res.send('Task Management API is running...');
 })
