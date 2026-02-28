@@ -11,7 +11,7 @@ const app = express()
 // Middleware
 // app.use(cors())
 app.use(cors({
-    origin: "https://frontend-domain.com",
+    origin: "https://todo-list-application-virid.vercel.app/",
     credentials: true,
 }));
 app.use(express.json())
