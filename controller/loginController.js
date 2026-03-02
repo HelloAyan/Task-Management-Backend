@@ -9,9 +9,8 @@ export const LoginUser = async (req, res) => {
 
         // check if user exists
         const user = await userModel.findOne({ email });
-        console.log("User found:", user);
         if (!user) {
-            return res.status(401).json({
+            return res.status(404).json({
                 success: false,
                 message: "User not found",
             })
@@ -22,7 +21,7 @@ export const LoginUser = async (req, res) => {
         if (!isMatch) {
             return res.status(401).json({
                 success: false,
-                message: "Invalid password",
+                message: "Wrong credentials",
             })
         };
 
