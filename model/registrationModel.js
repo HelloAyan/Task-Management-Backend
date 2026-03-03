@@ -17,7 +17,9 @@ const userSchema = new mongoose.Schema({
     acceptedTerms: {
         type: Boolean,
         required: true
-    }
+    },
+    resetPasswordToken: String,
+    resetPasswordExpire: Date,
 
 }, { timestamps: true });
 
