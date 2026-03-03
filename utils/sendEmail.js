@@ -1,26 +1,31 @@
-import nodemailer from 'nodemailer';
+// utils/sendEmail.js
 
-const sendEmail = async (onabort) => {
+import nodemailer from "nodemailer";
 
-    // Create transporter using gmail
-    const transporter = nodemailer.createTestAccount({
-        service: 'gmail',
+const sendEmail = async (options) => {
+
+    // create SMTP transporter
+    const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: process.env.SMTP_PORT,
+        secure: false,
         auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASS,
         }
     });
 
-    //Main options for sending email
+    // mail options
     const mailOptions = {
-        from: process.env.EMAIL_USER,
-        to: option.to,
-        subject: option.subject,
-        html: option.html
-    }
+        from: `"Task Manager" <${process.env.SMTP_USER}>`,
+        to: options.to,
+        subject: options.subject,
+        html: options.html,
+    };
 
-    // Send email
-    await transporter.sendEmail(mailOptions);
-}
+    // send email
+    await transporter.sendMail(mailOptions);
+
+};
 
 export default sendEmail;
