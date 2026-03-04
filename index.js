@@ -11,10 +11,10 @@ const app = express()
 // Middleware
 // app.use(cors())
 app.use(cors());
-app.use(express.json())
+app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
-const MONGO_URL = process.env.MONGO_URL
+const MONGO_URL = process.env.MONGO_URL;
 
 // Connect to MongoDB
 mongoose.connect(MONGO_URL).then(() => {

@@ -47,7 +47,6 @@ export const forgetPassword = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("FORGET PASSWORD ERROR:", error);
         res.status(500).json({
             message: "Server error",
             error: error.message
