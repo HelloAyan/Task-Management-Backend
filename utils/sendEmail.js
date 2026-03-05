@@ -10,10 +10,14 @@ const sendEmail = async (options) => {
             user: process.env.SMTP_USER,
             pass: process.env.SMTP_PASS,
         },
-        tls: {
-            rejectUnauthorized: false
-        }
     });
+
+    try {
+        await transporter.verify();
+        console.log("SMTP connected");
+    } catch (error) {
+        console.log("SMTP error:", error);
+    }
 
     await transporter.verify();
 
