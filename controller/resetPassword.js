@@ -9,14 +9,14 @@ export const resetPassword = async (req, res) => {
         const { password } = req.body;
 
         const hashedToken = crypto
-            .creatHash("sha256")
+            .createHash("sha256")
             .update(token)
             .digest("hex");
 
         // Find user by  token + check expiry
         const user = await User.findOne({
             resetPasswordToken: hashedToken,
-            resetPasswordExpire: { $gt: new Date() }
+            resetPasswordExpire: { $gt: Date.now() }
         });
 
         if (!user) {
@@ -38,6 +38,10 @@ export const resetPassword = async (req, res) => {
             message: "Password reset successful"
         });
     } catch { error } {
-        res.status(500).json({ message: "Server error" });
+        console.error(error);
+        res.status(500).json({
+            message: "Server error",
+            error: error.message,
+        });
     }
 }
