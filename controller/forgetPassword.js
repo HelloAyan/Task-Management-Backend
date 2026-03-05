@@ -35,11 +35,43 @@ export const forgetPassword = async (req, res) => {
             to: user.email,
             subject: "Password Reset",
             html: `
-        <h2>Password Reset</h2>
-        <p>Click the link below:</p>
-        <a href="${resetUrl}">${resetUrl}</a>
-        <p>This link will expire in 10 minutes.</p>
-      `
+            <div style="font-family: Arial, sans-serif; background-color:#f4f6f8; padding:40px;">
+            <div style="max-width:600px; margin:auto; background:#ffffff; padding:30px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+                
+                <h2 style="color:#333333; text-align:center;">Password Reset Request</h2>
+
+                <p style="color:#555; font-size:15px;">
+                We received a request to reset your password for your account.
+                If you made this request, please click the button below to set a new password.
+                </p>
+
+                <div style="text-align:center; margin:30px 0;">
+                <a href="${resetUrl}" 
+                    style="background-color:#2563eb; color:#ffffff; padding:12px 25px; 
+                    text-decoration:none; border-radius:5px; font-size:15px; display:inline-block;">
+                    Reset Password
+                </a>
+                </div>
+
+                <p style="color:#555; font-size:14px;">
+                This password reset link will expire in <strong>10 minutes</strong> for security reasons.
+                </p>
+
+                <p style="color:#777; font-size:13px;">
+                If you did not request a password reset, you can safely ignore this email.
+                Your password will remain unchanged.
+                </p>
+
+                <hr style="border:none; border-top:1px solid #eee; margin:25px 0;" />
+
+                <p style="font-size:12px; color:#999; text-align:center;">
+                Task Manager Application<br/>
+                This is an automated message, please do not reply to this email.
+                </p>
+
+            </div>
+            </div>
+            `
         });
 
         res.status(200).json({
