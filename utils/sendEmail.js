@@ -22,7 +22,7 @@ const sendEmail = async (options) => {
     await transporter.verify();
 
     const mailOptions = {
-        from: `"Task Manager" <nirabiubat@gmail.com>`,
+        from: `"Task Manager" <nirab2018@gmail.com>`,
         to: options.to,
         subject: options.subject,
         html: options.html,
