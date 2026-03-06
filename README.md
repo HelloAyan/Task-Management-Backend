@@ -58,4 +58,14 @@ https://task-management-backend-yv68.onrender.com/api/v1
 
 ---
 
-## Project Structure
+## API List
+POST   /api/v1/users/register
+POST   /api/v1/users/login
+POST   /api/v1/users/forgot-password
+POST   /api/v1/users/reset-password/:token
+
+GET    /api/v1/tasks
+POST   /api/v1/tasks
+PUT    /api/v1/tasks/:id
+DELETE /api/v1/tasks/:id
+
