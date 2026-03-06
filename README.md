@@ -58,14 +58,24 @@ https://task-management-backend-yv68.onrender.com/api/v1
 
 ---
 
-## API List
-POST   /api/v1/users/register
-POST   /api/v1/users/login
-POST   /api/v1/users/forgot-password
-POST   /api/v1/users/reset-password/:token
+## API Endpoints
 
-GET    /api/v1/tasks
-POST   /api/v1/tasks
-PUT    /api/v1/tasks/:id
-DELETE /api/v1/tasks/:id
+### Authentication
+
+| Method | Endpoint | Description |
+|------|------|------|
+| POST | /api/v1/users/register | Register a new user |
+| POST | /api/v1/users/login | Login user and generate JWT token |
+| POST | /api/v1/users/forgot-password | Send password reset email |
+| POST | /api/v1/users/reset-password/:token | Reset user password |
+
+### Tasks
+
+| Method | Endpoint | Description |
+|------|------|------|
+| GET | /api/v1/tasks | Get all tasks |
+| POST | /api/v1/tasks | Create a new task |
+| PUT | /api/v1/tasks/:id | Update task |
+| DELETE | /api/v1/tasks/:id | Delete task |
+
 
