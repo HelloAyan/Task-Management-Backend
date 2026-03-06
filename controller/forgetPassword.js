@@ -8,6 +8,7 @@ export const forgetPassword = async (req, res) => {
         const user = await User.findOne({ email });
         if (!user) {
             return res.status(404).json({
+                success: false,
                 message: "User not found"
             });
         }
@@ -75,11 +76,13 @@ export const forgetPassword = async (req, res) => {
         });
 
         res.status(200).json({
-            message: "Reset link sent to email"
+            success: true,
+            message: "Reset link has been sent to your email"
         });
 
     } catch (error) {
         res.status(500).json({
+            success: false,
             message: "Server error",
             error: error.message
         });

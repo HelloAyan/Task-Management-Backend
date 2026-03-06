@@ -21,6 +21,7 @@ export const resetPassword = async (req, res) => {
 
         if (!user) {
             return res.status(400).json({
+                success: false,
                 message: "Invalid or expired token"
             });
         }
@@ -35,11 +36,13 @@ export const resetPassword = async (req, res) => {
         await user.save();
 
         res.status(200).json({
+            success: true,
             message: "Password reset successful"
         });
     } catch { error } {
         console.error(error);
         res.status(500).json({
+            success: false,
             message: "Server error",
             error: error.message,
         });
