@@ -5,6 +5,14 @@ import sendEmail from "../utils/sendEmail.js";
 export const forgetPassword = async (req, res) => {
     try {
         const { email } = req.body;
+        if (!email) {
+            return res.status(400).json({
+                success: false,
+                message: "Email is required"
+            });
+        }
+
+        //Find user by email
         const user = await User.findOne({ email });
         if (!user) {
             return res.status(404).json({
